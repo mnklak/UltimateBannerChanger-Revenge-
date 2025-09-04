@@ -2,7 +2,7 @@
 
 ![Banner Example](https://raw.githubusercontent.com/discord-plugins/assets/main/example_banner.png)
 
-Troque seu banner do Discord **sem Nitro** escolhendo uma imagem do próprio aparelho, direto no client mod Revenge!
+Troque seu banner do Discord **sem Nitro** escolhendo uma imagem do aparelho, direto no client mod **Revenge**!
 
 ---
 
@@ -34,4 +34,3 @@ Troque seu banner do Discord **sem Nitro** escolhendo uma imagem do próprio apa
 Abra uma issue aqui ou pergunte na comunidade do Revenge.
 
 ---
-- Ainda em Desenvolvimento...
