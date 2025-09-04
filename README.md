@@ -1,8 +1,8 @@
 # Ultimate Banner Changer Local para Revenge
 
-![Banner Example](https://cdn.discordapp.com/attachments/1108969457812215878/1146838652795865138/example_banner.png)
+![Banner Example](https://raw.githubusercontent.com/discord-plugins/assets/main/example_banner.png)
 
-Troque seu banner do Discord **sem Nitro** escolhendo uma imagem do próprio aparelho, direto no client mod **Revenge**!
+Troque seu banner do Discord **sem Nitro** escolhendo uma imagem do próprio aparelho, direto no client mod Revenge!
 
 ---
 
