@@ -30,4 +30,4 @@ Made by [mnklak](https://github.com/mnklak)
 
 ## opcional for lazy
 
-[https://github.com/mnklak/bunny-plugins/blob/main/UCR/plugin](https://mnklak.github.io/bunny-plugins/)
+https://mnklak.github.io/bunny-plugins/
