@@ -1,26 +1,37 @@
-# Ultimate Banner Changer para Revenge
+# Ultimate Banner Changer Local para Revenge
 
-Este plugin permite mudar o banner do Discord sem Nitro, usando qualquer imagem hospedada.
+![Banner Example](https://cdn.discordapp.com/attachments/1108969457812215878/1146838652795865138/example_banner.png)
 
-## Instalação no Revenge
+Troque seu banner do Discord **sem Nitro** escolhendo uma imagem do próprio aparelho, direto no client mod **Revenge**!
 
-1. Copie e cole este URL no campo de instalação de plugin/script do Revenge:
+---
 
-```
-https://bunny-plugins.com/plugins/UltimateBannerChanger.js
-```
+## Instalação Rápida
 
-2. No console do Revenge, execute:
+1. **Baixe** o plugin:  
+   [UltimateBannerChangerLocal.js](https://bunny-plugins.com/plugins/UltimateBannerChangerLocal.js)
 
-```js
-openBannerChangerMenu()
-```
+2. **Adicione** o plugin no menu de scripts/plugins do Revenge.
 
-3. Cole a URL da imagem (JPG, PNG, GIF) quando solicitado.
+3. **Execute** no console do Revenge:
+   ```js
+   openLocalBannerChanger()
+   ```
+4. **Escolha uma imagem** (JPG, PNG ou GIF) do seu arquivo.
 
-## Avisos
+---
 
-- O uso de mods/clientes alternativos pode violar os Termos de Serviço do Discord.
-- Use por sua conta e risco.
+## Dúvidas comuns
 
+- **Precisa Nitro?** Não.
+- **Funciona com GIF?** Sim.
+- **Risco de ban?** Use por sua conta e risco (mods violam ToS).
+
+---
+
+## Suporte
+
+Abra uma issue aqui ou pergunte na comunidade do Revenge.
+
+---
 - Ainda em Desenvolvimento...
