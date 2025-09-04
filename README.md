@@ -1,36 +1,39 @@
-# UCR — Ultimate Custom Banner Changer (Local) para Revenge
+# UCR — Ultimate Custom Banner Changer (Local) for Revenge
 
-Este plugin permite alterar o banner do Discord sem precisar do Nitro, escolhendo uma imagem local. Compatível com Revenge.
+This plugin allows you to change your Discord banner without Nitro, using a local image. Compatible with Revenge.
 
-## Como usar
+## How to Use
 
-1. Instale o plugin no Revenge usando o link abaixo:
+1. Download or install the plugin in Revenge using the following link:
    ```
    https://mnklak.github.io/bunny-plugins/UCR/plugin
    ```
-2. Após carregar o plugin, execute o comando global no console:
+   > **Note:** If you see a 404 error, make sure the file named `plugin` (with no extension) is located in the `UCR` folder of your `bunny-plugins` repository and that GitHub Pages is enabled for your repo.  
+   > The correct folder structure should be:  
+   > `bunny-plugins/UCR/plugin`
+2. After the plugin loads, run the following global command in the console:
    ```js
    openLocalBannerChanger()
    ```
-3. Escolha uma imagem no seletor que abrir. O banner será atualizado!
+3. Select an image in the file picker. Your Discord banner will be updated!
 
-## Recursos
+## Features
 
-- Seleção de imagem local (PNG/JPG/GIF)
-- Conversão automática para base64
-- Envio do banner via API
-- Feedback por toast ou alert
+- Local image picker (PNG/JPG/GIF)
+- Automatic base64 conversion
+- Banner sent using Discord API
+- Feedback via toast or alert
 
-## Observações
+## Requirements & Warnings
 
-- É necessário estar logado no Discord no navegador para o plugin funcionar corretamente.
-- O token do usuário é utilizado para autenticação. Não compartilhe seu token!
-- O plugin pode ser salvo com o nome `plugin` (sem extensão) para maior compatibilidade.
+- You must be logged into Discord in your browser for the plugin to work.
+- The user token is used for authentication. **Do not share your token!**
+- For best compatibility, keep the filename as `plugin` (no extension).
 
-## Link direto
+## Direct Plugin Link
 
 [https://mnklak.github.io/bunny-plugins/UCR/plugin](https://mnklak.github.io/bunny-plugins/UCR/plugin)
 
 ---
 
-Plugin criado por [mnklak](https://github.com/mnklak)
+Plugin by [mnklak](https://github.com/mnklak)
