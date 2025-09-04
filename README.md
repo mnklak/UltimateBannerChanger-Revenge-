@@ -22,3 +22,5 @@ openBannerChangerMenu()
 
 - O uso de mods/clientes alternativos pode violar os Termos de Serviço do Discord.
 - Use por sua conta e risco.
+
+- Ainda em Desenvolvimento...
