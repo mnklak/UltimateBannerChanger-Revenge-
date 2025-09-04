@@ -1,6 +1,6 @@
 # UCR — Ultimate Custom Banner Changer for Revenge
 
-This plugin allows you to change your Discord banner locally without Nitro by selecting a custom image from your computer.
+This plugin allows you to change your Discord banner locally without Nitro by selecting a custom image from your device.
 
 ## Features
 
