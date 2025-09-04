@@ -1,0 +1,49 @@
+{
+  "name": "UCR — Ultimate Custom Banner Changer",
+  "description": "Muda o banner do Discord localmente sem Nitro. Compatível com Bunny e Revenge.",
+  "version": "1.0.0",
+  "author": "mnklak",
+  "main": "UCR/plugin.js",
+  "icon": "https://raw.githubusercontent.com/mnklak/bunny-plugins/main/UCR/icon.png",
+  "tags": ["discord", "banner", "customização", "plugin", "visual"],
+  "license": "MIT",
+  "repository": "https://github.com/mnklak/bunny-plugins",
+  "website": "https://mnklak.github.io/bunny-plugins/",
+  "support": {
+    "issues": "https://github.com/mnklak/bunny-plugins/issues",
+    "discord": "https://discord.gg/seulink"
+  },
+  "compatibility": {
+    "bunny": ">=1.0.0",
+    "revenge": ">=1.0.0"
+  },
+  "permissions": [
+    "storage",
+    "theme",
+    "user-profile"
+  ],
+  "commands": [
+    {
+      "name": "SetBanner",
+      "description": "Define um novo banner local",
+      "usage": "/setbanner [url]",
+      "example": "/setbanner https://meusite.com/banner.png"
+    },
+    {
+      "name": "ResetBanner",
+      "description": "Remove o banner customizado",
+      "usage": "/resetbanner"
+    }
+  ],
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2025-09-04",
+      "changes": [
+        "Plugin inicial criado",
+        "Compatível com Bunny e Revenge",
+        "Suporte a banners locais sem Nitro"
+      ]
+    }
+  ]
+}
