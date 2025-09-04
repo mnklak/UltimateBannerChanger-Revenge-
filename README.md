@@ -27,3 +27,7 @@ This plugin allows you to change your Discord banner locally without Nitro by se
 ## Credits
 
 Made by [mnklak](https://github.com/mnklak)
+
+## opcional for lazy
+
+https://github.com/mnklak/bunny-plugins/blob/main/UCR/plugin
