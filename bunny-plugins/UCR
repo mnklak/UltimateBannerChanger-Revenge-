@@ -1,0 +1,86 @@
+// Ultimate Custom Banner Changer Local para Revenge (UCR)
+// Permite mudar o banner do Discord sem Nitro escolhendo imagem local
+
+/**
+ * Pega o token do usuário atual
+ */
+function getToken() {
+    return window.localStorage.token?.replace(/"/g, "") || "SEU_TOKEN_AQUI";
+}
+
+/**
+ * Abre seletor de arquivos, lê imagem e converte para base64
+ */
+function pickImageAndConvertToBase64(callback) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/png,image/jpeg,image/jpg,image/gif';
+    input.style.display = 'none';
+    document.body.appendChild(input);
+
+    input.onchange = function (event) {
+        const file = event.target.files[0];
+        if (!file) {
+            showToast("Nenhum arquivo selecionado.");
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            // Remove o prefixo "data:image/xxx;base64,"
+            const base64 = e.target.result.split(',')[1];
+            callback(base64);
+        };
+        reader.onerror = function (e) {
+            showToast("Erro ao ler arquivo.");
+        };
+        reader.readAsDataURL(file);
+    };
+
+    input.click();
+    setTimeout(() => document.body.removeChild(input), 5000);
+}
+
+/**
+ * Muda o banner do usuário
+ * @param {string} bannerBase64 - Imagem em base64
+ */
+async function changeBannerBase64(bannerBase64) {
+    const endpoint = "https://discord.com/api/v9/users/@me/profile";
+    const body = {
+        banner: bannerBase64,
+        banner_type: "1", // tipo GIF/JPG/PNG
+    };
+    const resp = await fetch(endpoint, {
+        method: "PATCH",
+        headers: {
+            "Authorization": getToken(),
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
+    });
+    if (resp.ok) {
+        showToast("Banner alterado com sucesso!");
+    } else {
+        showToast("Falha ao alterar banner: " + resp.statusText);
+    }
+}
+
+/**
+ * Toast de feedback
+ */
+function showToast(msg) {
+    // Se Revenge tiver API de toast, use-a. Ou use alert.
+    if (window.showToast) window.showToast(msg);
+    else alert(msg);
+}
+
+/**
+ * Comando global
+ */
+window.openLocalBannerChanger = function () {
+    pickImageAndConvertToBase64(changeBannerBase64);
+    showToast("Selecione uma imagem para usar como banner.");
+};
+
+// Mensagem ao carregar o script
+showToast("UCR carregado! Use openLocalBannerChanger() para iniciar.");
