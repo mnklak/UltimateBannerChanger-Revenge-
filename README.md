@@ -1,39 +1,29 @@
-# UCR — Ultimate Custom Banner Changer (Local) for Revenge
+# UCR — Ultimate Custom Banner Changer for Revenge
 
-This plugin allows you to change your Discord banner without Nitro, using a local image. Compatible with Revenge.
-
-## How to Use
-
-1. Download or install the plugin in Revenge using the following link:
-   ```
-   https://mnklak.github.io/bunny-plugins/UCR/plugin
-   ```
-   > **Note:** If you see a 404 error, make sure the file named `plugin` (with no extension) is located in the `UCR` folder of your `bunny-plugins` repository and that GitHub Pages is enabled for your repo.  
-   > The correct folder structure should be:  
-   > `bunny-plugins/UCR/plugin`
-2. After the plugin loads, run the following global command in the console:
-   ```js
-   openLocalBannerChanger()
-   ```
-3. Select an image in the file picker. Your Discord banner will be updated!
+This plugin allows you to change your Discord banner locally without Nitro by selecting a custom image from your computer.
 
 ## Features
 
-- Local image picker (PNG/JPG/GIF)
-- Automatic base64 conversion
-- Banner sent using Discord API
-- Feedback via toast or alert
+- Change your Discord banner even without Nitro.
+- Select any image from your files (PNG, JPG, GIF).
+- Simple, easy-to-use command.
 
-## Requirements & Warnings
+## How to use
 
-- You must be logged into Discord in your browser for the plugin to work.
-- The user token is used for authentication. **Do not share your token!**
-- For best compatibility, keep the filename as `plugin` (no extension).
+1. Download or copy the `plugin` file from the `UCR` folder in this repository.
+2. Load the plugin in Revenge (either by link or by dragging the file).
+3. Open the console and run:
+   ```js
+   openLocalBannerChanger()
+   ```
+4. Select an image from your computer to use as your banner.
 
-## Direct Plugin Link
+## Notes
 
-[https://mnklak.github.io/bunny-plugins/UCR/plugin](https://mnklak.github.io/bunny-plugins/UCR/plugin)
+- This plugin works locally and **does not give you Nitro**.
+- Make sure you are logged into Discord in your browser for the script to work.
+- If you encounter any issues, check your browser's console for error messages.
 
----
+## Credits
 
-Plugin by [mnklak](https://github.com/mnklak)
+Made by [mnklak](https://github.com/mnklak)
