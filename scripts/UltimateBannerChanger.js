@@ -1,26 +1,43 @@
-// Ultimate Banner Changer para Revenge
-// Permite mudar o banner do Discord sem Nitro com interface simples
+// Ultimate Banner Changer Local para Revenge
+// Permite mudar o banner do Discord sem Nitro escolhendo imagem local
 
 /**
  * Pega o token do usuário atual
  */
 function getToken() {
-    // Dependendo do client mod, pode ser window.localStorage ou API interna
     return window.localStorage.token?.replace(/"/g, "") || "SEU_TOKEN_AQUI";
 }
 
 /**
- * Converte uma imagem (URL) para base64
+ * Abre seletor de arquivos, lê imagem e converte para base64
  */
-async function imageUrlToBase64(url) {
-    const response = await fetch(url);
-    const blob = await response.blob();
-    return new Promise((resolve, reject) => {
+function pickImageAndConvertToBase64(callback) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/png,image/jpeg,image/jpg,image/gif';
+    input.style.display = 'none';
+    document.body.appendChild(input);
+
+    input.onchange = function (event) {
+        const file = event.target.files[0];
+        if (!file) {
+            showToast("Nenhum arquivo selecionado.");
+            return;
+        }
         const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result.split(",")[1]);
-        reader.onerror = reject;
-        reader.readAsDataURL(blob);
-    });
+        reader.onload = function (e) {
+            // Remove o prefixo "data:image/xxx;base64,"
+            const base64 = e.target.result.split(',')[1];
+            callback(base64);
+        };
+        reader.onerror = function (e) {
+            showToast("Erro ao ler arquivo.");
+        };
+        reader.readAsDataURL(file);
+    };
+
+    input.click();
+    setTimeout(() => document.body.removeChild(input), 5000);
 }
 
 /**
@@ -49,31 +66,6 @@ async function changeBannerBase64(bannerBase64) {
 }
 
 /**
- * Valida se uma URL é uma imagem
- */
-function isValidImageUrl(url) {
-    return /\.(jpg|jpeg|png|gif)$/i.test(url);
-}
-
-/**
- * Menu de uso rápido
- */
-async function openBannerChangerMenu() {
-    const url = prompt("Cole a URL da imagem para banner:");
-    if (!url || !isValidImageUrl(url)) {
-        showToast("URL inválida! Use JPG, PNG ou GIF.");
-        return;
-    }
-    showToast("Convertendo imagem...");
-    try {
-        const base64 = await imageUrlToBase64(url);
-        await changeBannerBase64(base64);
-    } catch (e) {
-        showToast("Erro na conversão: " + e.message);
-    }
-}
-
-/**
  * Toast de feedback
  */
 function showToast(msg) {
@@ -85,7 +77,10 @@ function showToast(msg) {
 /**
  * Comando global
  */
-window.openBannerChangerMenu = openBannerChangerMenu;
+window.openLocalBannerChanger = function () {
+    pickImageAndConvertToBase64(changeBannerBase64);
+    showToast("Selecione uma imagem para usar como banner.");
+};
 
-// Auto toast para usuário saber usar
-showToast("Ultimate Banner Changer carregado! Use openBannerChangerMenu() para iniciar.");
+// Mensagem ao carregar o script
+showToast("Ultimate Banner Changer Local carregado! Use openLocalBannerChanger() para iniciar.");
