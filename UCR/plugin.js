@@ -1,100 +1,77 @@
-/**
- * UCR — Ultimate Custom Banner Changer
- * Autor: mnklak
- * Compatível com Revenge e Bunny
- */
+(function () {
+  const bannerURL = "https://i.imgur.com/5QFQk8F.png"; // 🔁 Troque pela URL do seu banner
 
-const BANNER_KEY = "ucr_custom_banner";
-
-function getBannerUrl() {
-  return localStorage.getItem(BANNER_KEY);
-}
-
-function setBannerUrl(url) {
-  localStorage.setItem(BANNER_KEY, url);
-  injectBanner(url);
-}
-
-function resetBanner() {
-  localStorage.removeItem(BANNER_KEY);
-  removeInjectedBanner();
-}
-
-function injectBanner(url) {
-  const profileBanner = document.querySelector('[class*="profileBanner"]');
-  if (profileBanner) {
-    profileBanner.style.backgroundImage = `url("${url}")`;
-    profileBanner.style.backgroundSize = "cover";
-    profileBanner.style.backgroundPosition = "center";
+  function removeNitroButton() {
+    const nitroButton = document.querySelector('[class*="premium"], [class*="upsell"], [class*="Nitro"]');
+    if (nitroButton) {
+      nitroButton.remove();
+      console.log("Botão Nitro removido.");
+    }
   }
-}
 
-function removeInjectedBanner() {
-  const profileBanner = document.querySelector('[class*="profileBanner"]');
-  if (profileBanner) {
-    profileBanner.style.backgroundImage = "";
+  function injectBanner(url) {
+    let bannerElement = document.querySelector('[class*="banner"], [class*="ProfileBanner"], [class*="profileBanner"]');
+
+    if (!bannerElement) {
+      console.warn("Banner original não encontrado. Criando elemento alternativo...");
+
+      const profileContainer = document.querySelector('[class*="profile"]');
+      if (profileContainer) {
+        bannerElement = document.createElement("div");
+        bannerElement.style.width = "100%";
+        bannerElement.style.height = "120px";
+        bannerElement.style.backgroundImage = `url("${url}")`;
+        bannerElement.style.backgroundSize = "cover";
+        bannerElement.style.backgroundPosition = "center";
+        bannerElement.style.borderRadius = "8px";
+        bannerElement.style.marginBottom = "10px";
+        profileContainer.prepend(bannerElement);
+        return;
+      }
+    }
+
+    bannerElement.style.backgroundImage = `url("${url}")`;
+    bannerElement.style.backgroundSize = "cover";
+    bannerElement.style.backgroundPosition = "center";
+    bannerElement.style.opacity = "1";
+    console.log("Banner aplicado.");
   }
-}
 
-function createUI() {
-  const container = document.createElement("div");
-  container.style.position = "fixed";
-  container.style.bottom = "20px";
-  container.style.right = "20px";
-  container.style.background = "#2f3136";
-  container.style.padding = "10px";
-  container.style.borderRadius = "8px";
-  container.style.zIndex = "9999";
-  container.style.boxShadow = "0 0 10px rgba(0,0,0,0.5)";
-  container.style.color = "#fff";
-  container.style.fontFamily = "Segoe UI, sans-serif";
+  function addCustomButton() {
+    const bannerContainer = document.querySelector('[class*="banner"], [class*="ProfileBanner"], [class*="profileBanner"]');
 
-  const input = document.createElement("input");
-  input.type = "text";
-  input.placeholder = "URL do banner";
-  input.style.width = "200px";
-  input.style.marginRight = "10px";
-  input.style.padding = "5px";
-  input.style.borderRadius = "4px";
-  input.style.border = "none";
+    if (bannerContainer) {
+      const customButton = document.createElement("button");
+      customButton.innerText = "Editar Banner";
+      customButton.style.padding = "8px 12px";
+      customButton.style.marginTop = "10px";
+      customButton.style.border = "none";
+      customButton.style.borderRadius = "6px";
+      customButton.style.backgroundColor = "#5865F2";
+      customButton.style.color = "#fff";
+      customButton.style.cursor = "pointer";
+      customButton.style.fontWeight = "bold";
+      customButton.onclick = () => {
+        const newURL = prompt("Digite a URL do novo banner:");
+        if (newURL) injectBanner(newURL);
+      };
 
-  const setBtn = document.createElement("button");
-  setBtn.textContent = "Aplicar";
-  setBtn.style.padding = "5px 10px";
-  setBtn.style.background = "#7289da";
-  setBtn.style.border = "none";
-  setBtn.style.borderRadius = "4px";
-  setBtn.style.color = "#fff";
-  setBtn.style.cursor = "pointer";
+      bannerContainer.appendChild(customButton);
+      console.log("Botão customizado adicionado.");
+    }
+  }
 
-  const resetBtn = document.createElement("button");
-  resetBtn.textContent = "Resetar";
-  resetBtn.style.marginLeft = "10px";
-  resetBtn.style.padding = "5px 10px";
-  resetBtn.style.background = "#f04747";
-  resetBtn.style.border = "none";
-  resetBtn.style.borderRadius = "4px";
-  resetBtn.style.color = "#fff";
-  resetBtn.style.cursor = "pointer";
+  function initPlugin() {
+    const interval = setInterval(() => {
+      const profileReady = document.querySelector('[class*="profile"]');
+      if (profileReady) {
+        clearInterval(interval);
+        removeNitroButton();
+        injectBanner(bannerURL);
+        addCustomButton();
+      }
+    }, 1000);
+  }
 
-  setBtn.onclick = () => {
-    const url = input.value.trim();
-    if (url) setBannerUrl(url);
-  };
-
-  resetBtn.onclick = () => {
-    resetBanner();
-  };
-
-  container.appendChild(input);
-  container.appendChild(setBtn);
-  container.appendChild(resetBtn);
-  document.body.appendChild(container);
-}
-
-// Auto-load banner on startup
-window.addEventListener("load", () => {
-  const url = getBannerUrl();
-  if (url) injectBanner(url);
-  createUI();
-});
+  initPlugin();
+})();
