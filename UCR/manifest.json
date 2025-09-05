@@ -1,17 +1,15 @@
 {
   "name": "UCR — Ultimate Custom Banner Changer",
-  "description": "Muda o banner do Discord localmente sem Nitro. Compatível com Bunny e Revenge.",
+  "description": "Permite mudar o banner do perfil localmente sem Nitro, direto do app Revenge. Remove o botão Nitro e adiciona botão personalizado.",
   "version": "1.0.0",
   "author": "mnklak",
   "main": "UCR/plugin.js",
   "icon": "https://raw.githubusercontent.com/mnklak/bunny-plugins/main/UCR/icon.png",
-  "tags": ["discord", "banner", "customização", "plugin", "visual"],
-  "license": "MIT",
+  "tags": ["discord", "banner", "custom", "plugin", "revenge", "visual"],
   "repository": "https://github.com/mnklak/bunny-plugins",
   "website": "https://mnklak.github.io/bunny-plugins/",
   "support": {
-    "issues": "https://github.com/mnklak/bunny-plugins/issues",
-    "discord": "https://discord.gg/seulink"
+    "issues": "https://github.com/mnklak/bunny-plugins/issues"
   },
   "compatibility": {
     "bunny": ">=1.0.0",
@@ -19,20 +17,20 @@
   },
   "permissions": [
     "storage",
-    "theme",
-    "user-profile"
+    "profile-ui",
+    "dom-manipulation"
   ],
   "commands": [
     {
-      "name": "SetBanner",
-      "description": "Define um novo banner local",
-      "usage": "/setbanner [url]",
-      "example": "/setbanner https://meusite.com/banner.png"
+      "name": "EditarBanner",
+      "description": "Abre prompt para definir novo banner via URL",
+      "usage": "/editarbanner [url]",
+      "example": "/editarbanner https://i.imgur.com/abc123.png"
     },
     {
-      "name": "ResetBanner",
+      "name": "ResetarBanner",
       "description": "Remove o banner customizado",
-      "usage": "/resetbanner"
+      "usage": "/resetarbanner"
     }
   ],
   "changelog": [
@@ -40,9 +38,10 @@
       "version": "1.0.0",
       "date": "2025-09-04",
       "changes": [
-        "Plugin inicial criado",
-        "Compatível com Bunny e Revenge",
-        "Suporte a banners locais sem Nitro"
+        "Banner customizado sem Nitro",
+        "Botão Nitro removido",
+        "Botão 'Editar Banner' adicionado",
+        "Compatível com Bunny e Revenge"
       ]
     }
   ]
